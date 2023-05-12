@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ryanj5-poi-map-app-dev
+  annotations:
+    argocd/app-name: ryanj5-poi-map-app-dev
+    backstage.io/kubernetes-id: ryanj5-poi-map-app-dev
+    backstage.io/kubernetes-namespace: ryanj5
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=ryanj5-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23JanusN/ryanj5-frontend
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.summit23bis.17gd.p1.openshiftapps.com/dev-pipelines/ns/ryanj5/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.summit23bis.17gd.p1.openshiftapps.com/k8s/ns/ryanj5/deployments/poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.summit23bis.17gd.p1.openshiftapps.com/#https://github.com/Summit23JanusN/ryanj5-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://poi-map-app-ryanj5.apps.summit23bis.17gd.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:ryanj"
+  system: workshop-system-ryanj5
+  consumesApis:
+    - gateway-api-ryanj5
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-ryanj5
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:ryanj"
